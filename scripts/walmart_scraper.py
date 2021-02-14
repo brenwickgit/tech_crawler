@@ -73,7 +73,7 @@ if len(sys.argv) > 1:
                 pass
 
     # -------GRID VIEW ------
-    elif gridview_containers:
+    if gridview_containers:
         for container in gridview_containers:
             try:
                 title = container.findAll(

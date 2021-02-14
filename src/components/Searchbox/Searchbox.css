@@ -6,12 +6,11 @@
 
 .searchbox {
   background-color: #fff;
-  width: 60rem;
+  width: 65vw;
   height: 4rem;
   overflow: hidden;
   border-radius: 20px;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.3);
-  transition: all 0.4s;
 }
 /* 
 .searchbox:hover,
@@ -41,9 +40,14 @@
 }
 
 .searchbox__button {
+  background-color: blueviolet;
+  cursor: pointer;
   transition: all 0.2s;
+  padding-left: 2rem;
+  padding-right: 2rem;
   border: none;
-  width: 10%;
+  width: 15%;
+  height: 100%;
 }
 
 .searchbox__button:focus,
