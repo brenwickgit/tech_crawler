@@ -1,0 +1,84 @@
+.result__cardbox {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  width: 85%;
+  gap: 2rem;
+  margin: 2rem 2rem;
+}
+
+.card {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: #fff;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.card__placeholder {
+  width: 100%;
+  height: 40rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: #fff;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.card__title {
+  color: blueviolet;
+}
+
+.card__logo {
+  margin-top: 2rem;
+  width: 15rem;
+}
+
+.card__item-text {
+  color: blue;
+  width: 60%;
+}
+.result__items {
+  margin: 6rem 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 1rem;
+}
+
+.result__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  width: 20rem;
+}
+
+.result__title {
+  width: 70%;
+  text-align: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.result__img {
+  max-width: 12rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.result__price {
+  font-weight: 700;
+}
