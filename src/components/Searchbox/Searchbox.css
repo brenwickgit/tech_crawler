@@ -1,5 +1,4 @@
 .searchbox__container {
-  height: 100vh;
   display: flex;
   align-items: center;
 }
@@ -10,8 +9,9 @@
   height: 4rem;
   overflow: hidden;
   border-radius: 20px;
-  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.3);
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.1);
 }
+
 /* 
 .searchbox:hover,
 .searchbox:active {
@@ -33,6 +33,7 @@
   border: none;
   outline: none;
   margin-left: 2rem;
+  font-size: 1.4rem;
 }
 
 .searchbox__entry:focus {
@@ -40,7 +41,7 @@
 }
 
 .searchbox__button {
-  background-color: blueviolet;
+  background-color: var(--color-primary-1);
   cursor: pointer;
   transition: all 0.2s;
   padding-left: 2rem;
@@ -54,5 +55,22 @@
 .searchbox__button:hover {
   border: none;
   outline: none;
-  background-color: violet;
+  background-color: var(--color-primary-3);
+}
+
+@media only screen and (max-width: 1200px) {
+  .searchbox {
+    width: 75vw;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .searchbox {
+    width: 90vw;
+  }
+  .searchbox__button {
+    padding-left: 0rem;
+    padding-right: 0rem;
+    width: 20%;
+  }
 }

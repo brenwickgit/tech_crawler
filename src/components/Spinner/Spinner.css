@@ -1,0 +1,17 @@
+.spinner__container {
+  padding: 18vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.spinner__icon {
+  color: var(--color-primary-1);
+  margin-top: 1rem;
+}
+
+.spinner__text {
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+}

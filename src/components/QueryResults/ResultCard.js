@@ -1,9 +1,7 @@
 import React, { Fragment } from 'react';
 import './QueryResults.css';
-import Spinner from '../Spinner';
+import Spinner from '../Spinner/Spinner';
 
-//TODO: Set state to generic JSON  data and map thorugh top 3 hits to render them to cards
-//TODO: Add null checking if site does not have item
 
 export default class ResultCard extends React.Component {
 
@@ -44,17 +42,18 @@ export default class ResultCard extends React.Component {
             )
         }
 
-
         return (
             <div className="card">
                 <img className="card__logo" src={this.props.logo}></img>
-                <div className="result__items">{this.state.data.splice(0, 4).map(item => (
-                    <div className="result__item" key={item.title}>
-                        <img className="result__img" src={item.image}></img>
-                        <a href={item.link} target="_blank" className="result__title">{item.title}</a>
-                        <p className="result__price">${item.price}</p>
-                    </div>
-                ))}</div>
+                <div className="card__content">
+                    <div className="result__items">{this.state.data.splice(0, 4).map(item => (
+                        <div className="result__item" key={item.title}>
+                            <img className="result__img" src={item.image}></img>
+                            <a href={item.link} target="_blank" className="result__title">{item.title}</a>
+                            <p className="result__price">${item.price}</p>
+                        </div>
+                    ))}</div>
+                </div>
             </div>
         );
 

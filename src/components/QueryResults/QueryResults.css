@@ -9,6 +9,16 @@
 
 .card {
   width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.card__content {
+  width: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -20,7 +30,7 @@
 
 .card__placeholder {
   width: 100%;
-  height: 40rem;
+  height: auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -31,7 +41,8 @@
 }
 
 .card__title {
-  color: blueviolet;
+  color: var(--color-primary-2);
+  padding: 18vh;
 }
 
 .card__logo {
@@ -44,7 +55,7 @@
   width: 60%;
 }
 .result__items {
-  margin: 6rem 3rem;
+  margin: 3rem 1rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;

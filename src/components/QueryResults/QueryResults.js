@@ -13,7 +13,7 @@ const QueryResults = (props) => {
             <div className="result__cardbox">
                 <ResultCard query={props.queryString} company='Newegg' route='/api/newegg' logo={newegg}/>
                 <ResultCard query={props.queryString} company='Walmart' route='/api/walmart' logo={walmart}/>
-                <ResultCard query={props.queryString} company='Amazon' route='/api/amazon' logo={amazon}/>
+                {/* <ResultCard query={props.queryString} company='Amazon' route='/api/amazon' logo={amazon}/> */}
             </div>
         </Fragment>
     );
