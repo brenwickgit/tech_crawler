@@ -13,6 +13,8 @@ def get_url(search_term):
     search_term = search_term.replace(' ', '+')
     return template.format(search_term)
 
+# XD
+
 
 def parse_query(args):
     """Converts the list of arguments into a spaced string"""
