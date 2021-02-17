@@ -4,7 +4,8 @@ const { spawn } = require('child_process')
 
 
   router.post('/', async (req, res) => {
-    console.log(req);
+    console.log('Request for walmart.py');
+    console.log(req.body);
 
     var largeDataset = [];
 
@@ -20,6 +21,10 @@ const { spawn } = require('child_process')
     script.stdout.on('data', function (data) {
         console.log('Piping data from python script...');
         largeDataset.push(data);
+        if(data){
+          console.log('Walmart Data');
+          console.log(data);
+        }
     });
 
     // In close event we are sure that stream from child process is closed
