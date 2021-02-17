@@ -1,6 +1,7 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import './QueryResults.css';
 import Spinner from '../Spinner/Spinner';
+import axios from 'axios';
 
 
 export default class ResultCard extends React.Component {
@@ -11,7 +12,7 @@ export default class ResultCard extends React.Component {
     }
 
     async componentDidMount() {
-        const url = 'http://localhost:5000' + this.props.route;
+        const url = this.props.route;
         const response = await fetch(url,  {
             method: 'POST',
             headers: {

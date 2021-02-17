@@ -27,18 +27,18 @@ app.use(function (req, res, next) {
 });
 
 //Define Routes
-app.use('/api/amazon', require('./api/amazon'));
-app.use('/api/newegg', require('./api/newegg'));
-app.use('/api/walmart', require('./api/walmart'));
+app.use('/api/amazon', require('./routes/api/amazon'));
+app.use('/api/newegg', require('./routes/api/newegg'));
+app.use('/api/walmart', require('./routes/api/walmart'));
 
 //Serve static assets in production
-if(process.env.NODE_ENV === 'production') {
+// if(process.env.NODE_ENV === 'production') {
   //Set static folder
   app.use(express.static(path.resolve(__dirname, 'client', 'build')));
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   })
-}
+// }
 
 const PORT = process.env.PORT || 5000;
 
