@@ -13,8 +13,6 @@ def get_url(search_term):
     search_term = search_term.replace(' ', '+')
     return template.format(search_term)
 
-# XD
-
 
 def parse_query(args):
     """Converts the list of arguments into a spaced string"""
@@ -42,7 +40,7 @@ if len(sys.argv) > 1:
     # Grabs each product
     containers = page_soup.findAll("div", {"class": "item-container"})
 
-    print('Newegg: Found {} products.'.format(len(containers)))
+    print('Found {} products.'.format(len(containers)))
 
     # Info from each product entry
     for container in containers:
@@ -52,8 +50,6 @@ if len(sys.argv) > 1:
 
             title = container.findAll("a", {"class": "item-title"})[0].text
 
-            image = container.findAll("img")[0].attrs['src']
-
             # TODO: Add shipping information
             shipping = container.findAll(
                 "li", {"class": "price-ship"})[0].text.strip()
@@ -61,12 +57,12 @@ if len(sys.argv) > 1:
                 "li", {"class": "price-current"})[0].strong.text.strip()
             link = container.findAll("a", {"class": "item-title"})[0]['href']
 
-            if title and price and image:
-                entry = {'title': title, 'price': price,
-                         'link': link,  'image': image}
+            if title and price:
+                entry = {'title': title, 'price': price, 'link': link}
                 my_list.append(entry)
 
         except Exception as e:
+            print(e)
             pass
 
     my_json = json.dumps(my_list)
