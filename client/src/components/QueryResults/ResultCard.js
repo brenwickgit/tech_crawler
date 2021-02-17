@@ -1,7 +1,6 @@
 import React from 'react';
 import './QueryResults.css';
 import Spinner from '../Spinner/Spinner';
-import axios from 'axios';
 
 
 export default class ResultCard extends React.Component {
