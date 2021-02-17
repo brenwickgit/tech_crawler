@@ -1,4 +1,3 @@
-import csv
 import sys
 import json
 from bs4 import BeautifulSoup
