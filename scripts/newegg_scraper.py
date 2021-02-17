@@ -42,7 +42,7 @@ if len(sys.argv) > 1:
     # Grabs each product
     containers = page_soup.findAll("div", {"class": "item-container"})
 
-    # print('Found {} products.'.format(len(containers)))
+    print('Newegg: Found {} products.'.format(len(containers)))
 
     # Info from each product entry
     for container in containers:
