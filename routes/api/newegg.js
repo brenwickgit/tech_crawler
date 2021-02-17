@@ -4,12 +4,12 @@ const { spawn } = require('child_process')
 
 
   router.post('/', async (req, res) => {
-    console.log(req);
+    console.log(req.body);
 
     var largeDataset = [];
 
     // Generates the arguments in the format needed to exec child process
-    const scriptLocation = ['./scripts/newegg_scraper.py']
+    const scriptLocation = ['../../scripts/newegg_scraper.py']
     var argsList = req.body.string.split(' ');
     mergedList = scriptLocation.concat(argsList)
 
