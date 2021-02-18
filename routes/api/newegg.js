@@ -3,12 +3,7 @@ const router = express.Router();
 const { spawn } = require('child_process')
 
 
-//New comment
   router.post('/', async (req, res) => {
-
-    
-    console.log(req.body);
-    console.log('request for newegg.py');
 
     var largeDataset = [];
 
@@ -16,6 +11,8 @@ const { spawn } = require('child_process')
     const scriptLocation = ['./scripts/newegg_scraper.py']
     var argsList = req.body.string.split(' ');
     mergedList = scriptLocation.concat(argsList)
+
+    console.log("Newegg merged list: " + mergedList);
 
     //  Spawn new child process to call the python script
     const script = spawn('python', mergedList);

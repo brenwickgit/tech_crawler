@@ -4,15 +4,15 @@ const { spawn } = require('child_process')
 
 
   router.post('/', async (req, res) => {
-    console.log('Request for walmart.py');
-    console.log(req.body);
-
     var largeDataset = [];
 
     // Generates the arguments in the format needed to exec child process
     const scriptLocation = ['./scripts/walmart_scraper.py']
     var argsList = req.body.string.split(' ');
     mergedList = scriptLocation.concat(argsList)
+    
+    console.log("Walmart merged list: " + mergedList);
+
 
     //  Spawn new child process to call the python script
     const script = spawn('python', mergedList);
