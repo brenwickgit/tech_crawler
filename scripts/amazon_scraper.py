@@ -26,23 +26,6 @@ def parse_query(args):
         arg_string = arg_string.join(arg_list)
     return arg_string
 
-
-# #  Returns a score based on how many words appear in the title from the user's query
-# def calculate_relevance(args, title):
-#     score = 0
-#     if len(args) > 1:
-#         arg_list = args[1:]
-#         for argument in arg_list:
-#             if argument.lower() in title.lower():
-#                 score += 1
-#     return score
-
-
-# # Used in sorting the list for relevance
-# def get_relevance(item):
-#     return item.get('relevance')
-
-
 # ------------------------------------------------Begin Script--------------------------------------------
 
 
@@ -83,8 +66,6 @@ if len(sys.argv) > 1:
 
         except IndexError as e:
             pass
-
-    #my_list.sort(key=get_relevance, reverse=True)
 
     my_json = json.dumps(my_list)
     print(my_json)
