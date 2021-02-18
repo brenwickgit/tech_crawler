@@ -21,10 +21,6 @@ const { spawn } = require('child_process')
     script.stdout.on('data', function (data) {
         console.log('Piping data from python script...');
         largeDataset.push(data);
-        if(data){
-          console.log('Walmart Data');
-          console.log(data);
-        }
     });
 
     // In close event we are sure that stream from child process is closed
