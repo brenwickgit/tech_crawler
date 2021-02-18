@@ -1,7 +1,6 @@
 # Imports
 import sys
 import json
-import requests
 from urllib.request import urlopen as uReq
 from bs4 import BeautifulSoup as soup
 
@@ -32,23 +31,16 @@ if len(sys.argv) > 1:
     query = parse_query(sys.argv)
     url = get_url(query)
 
-    # # Opens connection & downloads the HTML
-    headers = {
-        'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0'}
-
-    # fetching the url, raising error if operation fails
-    try:
-        response = requests.get(url, headers=headers)
-    except requests.exceptions.RequestException as e:
-        exit()
+    # Opens connection & downloads the HTML
+    uClient = uReq(url)
+    page_html = uClient.read()
 
     # ---Start scraping---
-    page_soup = soup(response.text, "html.parser")
-
+    page_soup = soup(page_html, "html.parser")
     # Grabs each product
     containers = page_soup.findAll("div", {"class": "item-container"})
 
-    print('Found {} products.'.format(len(containers)))
+    # print('Found {} products.'.format(len(containers)))
 
     # Info from each product entry
     for container in containers:
@@ -58,6 +50,8 @@ if len(sys.argv) > 1:
 
             title = container.findAll("a", {"class": "item-title"})[0].text
 
+            image = container.findAll("img")[0].attrs['src']
+
             # TODO: Add shipping information
             shipping = container.findAll(
                 "li", {"class": "price-ship"})[0].text.strip()
@@ -65,12 +59,12 @@ if len(sys.argv) > 1:
                 "li", {"class": "price-current"})[0].strong.text.strip()
             link = container.findAll("a", {"class": "item-title"})[0]['href']
 
-            if title and price:
-                entry = {'title': title, 'price': price, 'link': link}
+            if title and price and image:
+                entry = {'title': title, 'price': price,
+                         'link': link,  'image': image}
                 my_list.append(entry)
 
         except Exception as e:
-            print(e)
             pass
 
     my_json = json.dumps(my_list)
