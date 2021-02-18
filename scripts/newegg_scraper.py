@@ -1,7 +1,7 @@
 # Imports
 import sys
 import json
-from urllib.request import urlopen as uReq
+import requests
 from bs4 import BeautifulSoup as soup
 
 my_list = []
