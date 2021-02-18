@@ -30,6 +30,7 @@ app.use(function (req, res, next) {
 app.use('/api/amazon', require('./routes/api/amazon'));
 app.use('/api/newegg', require('./routes/api/newegg'));
 app.use('/api/walmart', require('./routes/api/walmart'));
+app.use('/api/microcenter', require('./routes/api/microcenter'));
 
 //Serve static assets in production
 // if(process.env.NODE_ENV === 'production') {
