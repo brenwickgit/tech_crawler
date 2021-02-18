@@ -1,6 +1,7 @@
 # Imports
 import sys
 import json
+import requests
 from urllib.request import urlopen as uReq
 from bs4 import BeautifulSoup as soup
 
@@ -31,12 +32,19 @@ if len(sys.argv) > 1:
     query = parse_query(sys.argv)
     url = get_url(query)
 
-    # Opens connection & downloads the HTML
-    uClient = uReq(url)
-    page_html = uClient.read()
+    # # Opens connection & downloads the HTML
+    headers = {
+        'User-Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0'}
+
+    # fetching the url, raising error if operation fails
+    try:
+        response = requests.get(url, headers=headers)
+    except requests.exceptions.RequestException as e:
+        exit()
 
     # ---Start scraping---
-    page_soup = soup(page_html, "html.parser")
+    page_soup = soup(response.text, "html.parser")
+
     # Grabs each product
     containers = page_soup.findAll("div", {"class": "item-container"})
 
