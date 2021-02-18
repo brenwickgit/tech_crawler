@@ -12,8 +12,8 @@ const QueryResults = (props) => {
     return (
         <Fragment>
             <div className="result__cardbox">
-                <ResultCard query={props.queryString} company='Newegg' route='/api/newegg' logo={newegg}/>
                 <ResultCard query={props.queryString} company='Walmart' route='/api/walmart' logo={walmart}/>
+                <ResultCard query={props.queryString} company='Newegg' route='/api/newegg' logo={newegg}/>
                 <ResultCard query={props.queryString} company='Microcenter' route='/api/microcenter' logo={microcenter}/>
                 {/* <ResultCard query={props.queryString} company='Amazon' route='/api/amazon' logo={amazon}/> */}
             </div>
