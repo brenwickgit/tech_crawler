@@ -9,8 +9,8 @@ my_list = []
 
 def get_url(search_term):
     """Generates a proper search URL from the search term"""
-    template = 'https://www.microcenter.com/search/search_results.aspx?N=&cat=&Ntt={}&searchButton=search'
-    search_term = search_term.replace(' ', '+')
+    template = 'https://www.gearbest.com/sale/{}/'
+    search_term = search_term.replace(' ', '-')
     return template.format(search_term)
 
 
@@ -24,7 +24,7 @@ def parse_query(args):
     return arg_string
 
 
-base_url = 'https://www.microcenter.com'
+base_url = 'https://www.gearbest.com'
 
 
 # ------------------------------------------------Begin Script--------------------------------------------
@@ -41,32 +41,30 @@ if len(sys.argv) > 1:
     # fetching the url, raising error if operation fails
     try:
         response = requests.get(url, headers=headers)
+
     except requests.exceptions.RequestException as e:
         exit()
 
     # ---Start scraping---
     page_soup = soup(response.text, "html.parser")
 
-    containers = page_soup.findAll("li", {"class": "product_wrapper"})
+    containers = page_soup.findAll("li")
 
     # Info from each product entry
     for container in containers:
 
         try:
-            title_container = container.findAll("div", {"class": "normal"})[0]
-            title = title_container.h2.a.text
-
-            link = title_container.h2.a["href"]
-            link = base_url + link
-
-            price = container.findAll("span",  {"itemprop": "price"})[
-                0].text[1:]
-
-            image = container.findAll("img")[0].attrs["src"]
+            title = container.findAll(
+                "a", {"class": "gbGoodsItem_title"})[0].text.strip()
+            link = container.findAll(
+                "a", {"class": "gbGoodsItem_title"})[0]['href']
+            price = container.findAll(
+                "p", {"class": "gbGoodsItem_price"})[0].text
+            image = container.findAll("img")[0].attrs['data-lazy']
 
             if title and price and image:
-                entry = {'title': title, 'link': link,
-                         'image': image, 'price': price}
+                entry = {'title': title, 'price': price,
+                         'link': link,  'image': image}
                 my_list.append(entry)
 
         except Exception as e:

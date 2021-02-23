@@ -12,8 +12,6 @@ const { spawn } = require('child_process')
     var argsList = req.body.string.split(' ');
     mergedList = scriptLocation.concat(argsList)
 
-    console.log("Newegg merged list: " + mergedList);
-
     //  Spawn new child process to call the python script
     const script = spawn('python', mergedList);
 

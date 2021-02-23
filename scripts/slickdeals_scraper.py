@@ -9,7 +9,7 @@ my_list = []
 
 def get_url(search_term):
     """Generates a proper search URL from the search term"""
-    template = 'https://www.microcenter.com/search/search_results.aspx?N=&cat=&Ntt={}&searchButton=search'
+    template = 'https://slickdeals.net/newsearch.php?src=SearchBarV2&q={}&searcharea=deals&searchin=first'
     search_term = search_term.replace(' ', '+')
     return template.format(search_term)
 
@@ -24,7 +24,7 @@ def parse_query(args):
     return arg_string
 
 
-base_url = 'https://www.microcenter.com'
+base_url = 'https://www.slickdeals.com'
 
 
 # ------------------------------------------------Begin Script--------------------------------------------
@@ -47,27 +47,27 @@ if len(sys.argv) > 1:
     # ---Start scraping---
     page_soup = soup(response.text, "html.parser")
 
-    containers = page_soup.findAll("li", {"class": "product_wrapper"})
+    containers = page_soup.findAll("div", {"class": "resultRow"})
 
     # Info from each product entry
     for container in containers:
 
         try:
-            title_container = container.findAll("div", {"class": "normal"})[0]
-            title = title_container.h2.a.text
+            title = container.findAll("a", {"class": "dealTitle"})[0].text
 
-            link = title_container.h2.a["href"]
-            link = base_url + link
+            link = base_url + container.findAll(
+                "a", {"class": "dealTitle"})[0]['href']
 
-            price = container.findAll("span",  {"itemprop": "price"})[
-                0].text[1:]
+            image = container.find("img").attrs['data-original']
 
-            image = container.findAll("img")[0].attrs["src"]
+            price = container.findAll(
+                "span", {"class": "price"})[0].text
 
             if title and price and image:
-                entry = {'title': title, 'link': link,
-                         'image': image, 'price': price}
+                entry = {'title': title, 'price': price,
+                         'link': link,  'image': image}
                 my_list.append(entry)
+            pass
 
         except Exception as e:
             pass

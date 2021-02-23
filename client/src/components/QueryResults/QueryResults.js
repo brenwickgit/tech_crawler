@@ -15,6 +15,8 @@ const QueryResults = (props) => {
                 <ResultCard query={props.queryString} company='Walmart' route='/api/walmart' logo={walmart}/>
                 <ResultCard query={props.queryString} company='Newegg' route='/api/newegg' logo={newegg}/>
                 <ResultCard query={props.queryString} company='Microcenter' route='/api/microcenter' logo={microcenter}/>
+                <ResultCard query={props.queryString} company='Slickdeals' route='/api/slickdeals' logo={slickdeals}/>
+                <ResultCard query={props.queryString} company='Gearbest' route='/api/gearbest' logo={gearbest}/>
                 {/* <ResultCard query={props.queryString} company='Amazon' route='/api/amazon' logo={amazon}/> */}
             </div>
         </Fragment>

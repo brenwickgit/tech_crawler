@@ -2,6 +2,7 @@
 import sys
 import json
 import requests
+from urllib.request import urlopen as uReq
 from bs4 import BeautifulSoup as soup
 
 my_list = []
@@ -23,6 +24,8 @@ def parse_query(args):
         arg_string = arg_string.join(arg_list)
     return arg_string
 
+
+base_url = 'https://www.walmart.com'
 
 # ------------------------------------------------Begin Script--------------------------------------------
 
@@ -59,6 +62,8 @@ if len(sys.argv) > 1:
                     "a", {"class": "product-title-link"})[0].text
                 link = container.findAll(
                     "a", {"class": "product-title-link"})[0]['href']
+                link = base_url + link
+
                 price = container.findAll(
                     "span", {"class": "price-characteristic"})[0].text
                 image = container.findAll("img")[0].attrs['src']
