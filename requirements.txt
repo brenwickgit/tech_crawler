@@ -1,0 +1,5 @@
+unicodecsv==0.14.1
+json5==0.9.5
+beautifulsoup4==4.9.2
+urllib3==1.25.9
+requests==2.24.0

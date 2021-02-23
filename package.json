@@ -24,13 +24,17 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+<<<<<<< HEAD
     "client": "npm start",
     "server": "nodemon server",
     "dev": "concurrently \"npm run server\" \"npm run client\""
+=======
+    "heroku-postbuild" : "cd client && npm install && npm run build"
+>>>>>>> bac53160a6994eca163d33b9a29a88c51ffdfdaa
   },
   "eslintConfig": {
     "extends": [
