@@ -3,7 +3,6 @@ const router = express.Router();
 const { spawn } = require('child_process')
 
   router.post('/', async (req, res) => {
-    console.log(req);
 
     var largeDataset = [];
 

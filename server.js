@@ -31,6 +31,9 @@ app.use('/api/amazon', require('./api/amazon'));
 app.use('/api/newegg', require('./api/newegg'));
 app.use('/api/walmart', require('./api/walmart'));
 app.use('/api/microcenter', require('./api/microcenter'));
+app.use('/api/slickdeals', require('./api/slickdeals'));
+app.use('/api/gearbest', require('./api/gearbest'));
+
 
 //Serve static assets in production
 if(process.env.NODE_ENV === 'production') {

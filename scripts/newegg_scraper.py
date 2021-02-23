@@ -24,6 +24,9 @@ def parse_query(args):
     return arg_string
 
 
+base_url = 'https://www.newegg.com'
+
+
 # ------------------------------------------------Begin Script--------------------------------------------
 
 # Will only run the script if arguments are provided
@@ -57,7 +60,8 @@ if len(sys.argv) > 1:
                 "li", {"class": "price-ship"})[0].text.strip()
             price = container.findAll(
                 "li", {"class": "price-current"})[0].strong.text.strip()
-            link = container.findAll("a", {"class": "item-title"})[0]['href']
+            link = container.findAll(
+                "a", {"class": "item-title"})[0]['href']
 
             if title and price and image:
                 entry = {'title': title, 'price': price,

@@ -8,7 +8,7 @@ const { spawn } = require('child_process')
     var largeDataset = [];
 
     // Generates the arguments in the format needed to exec child process
-    const scriptLocation = ['./scripts/microcenter_scraper.py']
+    const scriptLocation = ['./scripts/slickdeals_scraper.py']
     var argsList = req.body.string.split(' ');
     mergedList = scriptLocation.concat(argsList)
 
